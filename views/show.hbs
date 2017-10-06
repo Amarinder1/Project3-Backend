@@ -1,0 +1,31 @@
+{{#unless person}}
+  <h2>That person does not exist!</h2>
+{{else}}
+  <h2>Name: {{person.name}}
+  <br>Tasks:
+  {{#each person.tasks as |task index|}}
+    <li>{{task.title}}</li>
+    <form method="post" action="/{{../person.name}}/{{task.title}}/remove">
+      <button type="submit">Delete Task From Person</button>
+    </form>
+  {{/each}}
+</h2>
+
+<!--form that updates person info  -->
+<form action="/{{person.name}}" method="post">
+  <input type="text" name="name" placeholder="Name" value={{person.name}}>
+  <button type="submit">Update Person</button>
+</form>
+
+<br>
+<!--delete button  -->
+<form method="post" action="/{{person.name}}/delete">
+  <button type="submit">Delete Person</button>
+</form>
+
+<br>
+<form action="/{{person.name}}/{{task.title}}/add" method="post">
+  <input type="text" name="task" placeholder="Task">
+  <button type="submit">Add Task to Person</button>
+</form>
+{{/unless}}

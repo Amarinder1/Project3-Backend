@@ -1,0 +1,27 @@
+{
+  "name": "Project3-Backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "hello.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.1",
+    "hbs": "^4.0.1",
+    "mongoose": "^4.12.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amarinder1/Project3-Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Amarinder1/Project3-Backend/issues"
+  },
+  "homepage": "https://github.com/Amarinder1/Project3-Backend#readme"
+}

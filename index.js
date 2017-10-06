@@ -55,19 +55,13 @@ app.post("/:name/delete", function(req, res){
 });
 
 //add task to person
-app.post("/:name/:task/add", function addTask(req, res){
-  Person.findOne({name: req.params.name}, function(err, docs){
-    docs.tasks.push(new Task({title: req.body.task}))
-    docs.save(function(err, results){
-      if(err){
-        console.log(err)
-      }
-      else{
-        res.redirect("/" + docs.name)
-      }
-    });
-  });
-});
+app.post('/:name/addTask', (req, res) => {
+  Task.create(req.body.tasks).then(task => {
+    Person.findOneAndUpdate({ name: req.params.name }, {$push: {tasks: (task)}}).then(person => {
+      res.redirect('/' + person.name)
+    })
+  })
+ })
 
 //remove task from person
 app.post("/:name/:task/remove", function removeTask(req, res){

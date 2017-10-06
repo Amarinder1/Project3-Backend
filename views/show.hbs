@@ -18,14 +18,19 @@
 </form>
 
 <br>
-<!--delete button  -->
+<!--delete person  -->
 <form method="post" action="/{{person.name}}/delete">
   <button type="submit">Delete Person</button>
 </form>
 
+<!--add task  -->
 <br>
-<form action="/{{person.name}}/{{task.title}}/add" method="post">
-  <input type="text" name="task" placeholder="Task">
-  <button type="submit">Add Task to Person</button>
+<form action='/{{person.name}}/addTask' method='post'>
+  <input name='tasks[title]' type='text' placeholder='Name'/>
+  <button type='submit'>Add Task</button>
 </form>
+
+<br>
+<form action='/'>
+  <button type="submit">Home</button>
 {{/unless}}

@@ -1,6 +1,7 @@
 [
   {
     "name": "Amarinder",
+    "phone": "2404236498",
     "tasks": [
       {"title": "clean room"},
       {"title": "take out trash"}
@@ -8,6 +9,7 @@
   },
   {
     "name": "Bil",
+    "phone": "2404213620", 
     "tasks": [
       {"title": "walk dog"},
       {"title": "do homework"}

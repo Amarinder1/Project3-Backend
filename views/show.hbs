@@ -2,6 +2,7 @@
   <h2>That person does not exist!</h2>
 {{else}}
   <h2>Name: {{person.name}}
+  <h2>Phone: {{person.phone}}
   <br>Tasks:
   {{#each person.tasks as |task index|}}
     <li>{{task.title}}</li>
@@ -14,6 +15,7 @@
 <!--form that updates person info  -->
 <form action="/{{person.name}}" method="post">
   <input type="text" name="name" placeholder="Name" value={{person.name}}>
+  <input type="text" name="phone" placeholder="Phone" value={{person.phone}}>
   <button type="submit">Update Person</button>
 </form>
 

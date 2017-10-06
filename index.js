@@ -2,7 +2,7 @@ var express   = require("express");
 var parser    = require("body-parser");
 var hbs       = require("express-handlebars");
 var mongoose  = require('./db/connection.js');
-
+const cors = require('cors')
 var Person = mongoose.model("Person")
 var Task = mongoose.model("Task")
 
@@ -12,45 +12,43 @@ var app = express();
 app.set("port", process.env.PORT || 3001);
 app.set("view engine", "hbs");
 
+app.use(cors())
+
 //NEED THIS FOR REQ.BODY!!!!
-app.use(parser.urlencoded({extended:true}));
+app.use(parser.json({extended:true}));
 
 //homepage
 app.get("/", function (req, res){
   Person.find({}).then(function(people){
-    res.render("index.hbs", {
-      people: people
-    });
+    res.json(people);
   });
 });
 
 //shows individual person
 app.get("/:name", function(req, res){
   Person.findOne({name: req.params.name}).then(function(person){
-    res.render("show", {
-      person: person
-    });
+    res.json(person);
   });
 });
 
 //creates a new person
 app.post("/", function (req, res){
   Person.create(req.body).then(function(person){
-    res.redirect("/" + person.name);
+    res.json(person);
   });
 });
 
 //updates person
 app.post("/:name", function (req, res){
   Person.findOneAndUpdate({name: req.params.name}, req.body, {new:true}).then(function(person){
-    res.redirect('/' + person.name)
+    res.json(person);
   })
 })
 
 //deletes a person
 app.post("/:name/delete", function(req, res){
   Person.findOneAndRemove({name: req.params.name}).then(function(){
-    res.redirect("/");
+    res.json("/");
   });
 });
 
@@ -58,7 +56,7 @@ app.post("/:name/delete", function(req, res){
 app.post('/:name/addTask', (req, res) => {
   Task.create(req.body.tasks).then(task => {
     Person.findOneAndUpdate({ name: req.params.name }, {$push: {tasks: (task)}}).then(person => {
-      res.redirect('/' + person.name)
+      res.json('/' + person.name)
     })
   })
  })
@@ -73,7 +71,7 @@ app.post("/:name/:task/remove", function removeTask(req, res){
       console.log(err);
     }
     else{
-      res.redirect("/" + docs.name);
+      res.json("/" + docs.name);
     }
   });
 });

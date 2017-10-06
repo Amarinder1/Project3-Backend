@@ -5,6 +5,7 @@
   "main": "hello.js",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "express": "^4.16.1",
     "express-handlebars": "^3.0.0",
     "hbs": "^4.0.1",

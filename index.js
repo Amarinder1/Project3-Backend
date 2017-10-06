@@ -24,7 +24,7 @@ app.get("/", function (req, res){
   });
 });
 
-//shows individual restaurant
+//shows individual person
 app.get("/:name", function(req, res){
   Person.findOne({name: req.params.name}).then(function(person){
     res.render("show", {
@@ -33,28 +33,28 @@ app.get("/:name", function(req, res){
   });
 });
 
-//creates a new restaurant
+//creates a new person
 app.post("/", function (req, res){
   Person.create(req.body).then(function(person){
     res.redirect("/" + person.name);
   });
 });
 
-//updates restaurant
+//updates person
 app.post("/:name", function (req, res){
   Person.findOneAndUpdate({name: req.params.name}, req.body, {new:true}).then(function(person){
     res.redirect('/' + person.name)
   })
 })
 
-//deletes a restaurant
+//deletes a person
 app.post("/:name/delete", function(req, res){
   Person.findOneAndRemove({name: req.params.name}).then(function(){
     res.redirect("/");
   });
 });
 
-//add item to menu
+//add task to person
 app.post("/:name/:item/add", function addItem(req, res){
   Person.findOne({name: req.params.name}, function(err, docs){
     docs.items.push(new Task({title: req.body.task}))
@@ -69,7 +69,7 @@ app.post("/:name/:item/add", function addItem(req, res){
   });
 });
 
-//remove item from menu
+//remove task from person
 app.post("/:name/:item/remove", function removeItem(req, res){
   Person.findOneAndUpdate({name: req.params.name}, {
     $pull: { tasks: {title: req.params.item} }

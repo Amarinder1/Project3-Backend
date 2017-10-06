@@ -1,0 +1,10 @@
+{{#each people as |person index|}}
+<h3>
+  <a href="/{{person.name}}">{{person.name}}</a>
+</h3>
+{{/each}}
+
+<form action="/" method="post">
+  <input type="text" name="name" placeholder="Name"/>
+  <button type="submit">Add Person</button>
+</form>

@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Amarinder",
+    "tasks": [
+      {"title": "clean room"},
+      {"title": "take out trash"}
+    ]
+  },
+  {
+    "name": "Bil",
+    "tasks": [
+      {"title": "walk dog"},
+      {"title": "do homework"}
+    ]
+  }
+]

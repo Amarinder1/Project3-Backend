@@ -55,8 +55,8 @@ app.post("/:name/delete", function(req, res){
 //add task to person
 app.post('/:name/addTask', (req, res) => {
   Task.create(req.body.tasks).then(task => {
-    Person.findOneAndUpdate({ name: req.params.name }, {$push: {tasks: (task)}}).then(person => {
-      res.json('/' + person.name)
+    Person.findOneAndUpdate({ name: req.params.name }, {$push: {tasks: task}}, { 'new': true}).then(person => {
+      res.json(person)
     })
   })
  })
@@ -71,7 +71,7 @@ app.post("/:name/:task/remove", function removeTask(req, res){
       console.log(err);
     }
     else{
-      res.json("/" + docs.name);
+      res.json(docs.name);
     }
   });
 });

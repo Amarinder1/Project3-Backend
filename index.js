@@ -18,7 +18,7 @@ app.use(cors())
 app.use(parser.json({extended:true}));
 
 //homepage
-app.get("/", function (req, res){
+app.get("/home", function (req, res){
   Person.find({}).then(function(people){
     res.json(people);
   });
@@ -32,7 +32,7 @@ app.get("/:name", function(req, res){
 });
 
 //creates a new person
-app.post("/", function (req, res){
+app.post("/home", function (req, res){
   Person.create(req.body).then(function(person){
     res.json(person);
   });

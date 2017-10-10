@@ -48,7 +48,7 @@ app.post("/:name", function (req, res){
 //deletes a person
 app.post("/:name/delete", function(req, res){
   Person.findOneAndRemove({name: req.params.name}).then(function(){
-    res.json("/home");
+    res.json("/");
   });
 });
 

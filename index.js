@@ -71,7 +71,7 @@ app.post("/:name/:task/remove", function removeTask(req, res){
       console.log(err);
     }
     else{
-      res.json(docs.name);
+      res.json(docs);
     }
   });
 });

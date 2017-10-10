@@ -3,16 +3,16 @@
     "name": "Amarinder",
     "phone": "2404236498",
     "tasks": [
-      {"title": "clean room"},
-      {"title": "take out trash"}
+      {"title": "clean room", "date": "1/2/3"},
+      {"title": "take out trash", "date": "1/2/3"}
     ]
   },
   {
     "name": "Bil",
-    "phone": "2404213620", 
+    "phone": "2404213620",
     "tasks": [
-      {"title": "walk dog"},
-      {"title": "do homework"}
+      {"title": "walk dog", "date": "9/3/4"},
+      {"title": "do homework", "date": "9/3/4"}
     ]
   }
 ]

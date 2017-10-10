@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var TaskSchema = new mongoose.Schema({
   title: String,
-  date: Date
+  date: String
 })
 
 var PersonSchema = new mongoose.Schema({

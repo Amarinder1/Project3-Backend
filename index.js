@@ -76,6 +76,22 @@ app.post("/:name/:task/remove", function removeTask(req, res){
   });
 });
 
+//twilio integration
+app.post('/sendsms', parser.json(), (req, res) => {
+  var accountSid = 'ACcc9da7643bf18e44f258ebd74eea7a82';
+  var authToken = '1a3c44a9730d9edef125e2b9ecbaba92';
+  var client = require('twilio')(accountSid, authToken);
+  client.sendMessage({
+    to: req.body.data,
+    from: '+12407021328',
+    body: 'word to your mother.'
+  }, function (err, responseData) {
+    if (!err) {
+      res.json({"From": responseData.from, "Body": responseData.body});
+    }
+  });
+});
+
 //lets you know if you're connected to the localhost
 app.listen(app.get("port"), function(){
   console.log("DO THE DEW!!");

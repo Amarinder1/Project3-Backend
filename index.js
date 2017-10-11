@@ -5,6 +5,7 @@ var mongoose  = require('./db/connection.js');
 const cors = require('cors')
 var Person = mongoose.model("Person")
 var Task = mongoose.model("Task")
+var path = require("path");
 
 var app = express();
 
@@ -13,6 +14,8 @@ app.set("port", process.env.PORT || 3001);
 app.set("view engine", "hbs");
 
 app.use(cors())
+app.use('/', express.static('public'));
+
 
 //NEED THIS FOR REQ.BODY!!!!
 app.use(parser.json({extended:true}));
@@ -81,10 +84,10 @@ app.post('/sendsms', parser.json(), (req, res) => {
   var accountSid = 'ACcc9da7643bf18e44f258ebd74eea7a82';
   var authToken = '1a3c44a9730d9edef125e2b9ecbaba92';
   var client = require('twilio')(accountSid, authToken);
-  client.sendMessage({
+  client.create({
     to: req.body.data,
     from: '+12407021328',
-    body: 'word to your mother.'
+    body: 'Great success!!! *Borat voice*.'
   }, function (err, responseData) {
     if (!err) {
       res.json({"From": responseData.from, "Body": responseData.body});

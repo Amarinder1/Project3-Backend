@@ -8,6 +8,8 @@ var Task = mongoose.model("Task")
 var path = require("path");
 var keys = require("./twiliokeys");
 
+cronJob = require('cron').CronJob;
+
 var app = express();
 
 //Sets localhost to 3001
@@ -42,25 +44,38 @@ app.post("/home", function (req, res){
   });
 });
 
-//twilio integration
-app.post('/sendsms', (req, res) => {
-  var accountSid = 'ACcc9da7643bf18e44f258ebd74eea7a82';
-  var authToken = '1a3c44a9730d9edef125e2b9ecbaba92';
+app.post('/schedSMS'), (req, res) => {
   var twilio = require('twilio')
   var client = new twilio(keys.sid, keys.token);
-  client.messages.create({
-    to: req.body.recipient,
-    from: '+12407021328',
-    body: 'Great success!!! *Borat voice*.'
-  }, function (err, responseData) {
-    console.log(err, responseData)
-    if (!err) {
-      res.json({
-        "From": responseData.from,
-        "Body": responseData.body
-      });
-    }
-  });
+  var CronJob = require('cron').CronJob;
+      new CronJob('* * * * * *', function() {
+      console.log('You will see this message every second');
+    }, null, true);
+}
+
+//twilio integration
+app.post('/sendsms', (req, res) => {
+
+  var CronJob = require('cron').CronJob;
+  var twilio = require('twilio')
+  var client = new twilio(keys.sid, keys.token);
+
+  new CronJob('* */8 * * *', function() {
+    client.messages.create({
+      to: req.body.recipient,
+      from: '+12407021328',
+      body: 'You still have a pending to-do item. Tick tock! We are not getting any younger...'
+    }, function (err, responseData) {
+      console.log(err, responseData)
+      if (!err) {
+        res.json({
+          "From": responseData.from,
+          "Body": responseData.body
+        });
+      }
+    });
+}, null, true, 'America/New_York');
+
 });
 
 //updates person

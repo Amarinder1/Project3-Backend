@@ -6,6 +6,7 @@ const cors = require('cors')
 var Person = mongoose.model("Person")
 var Task = mongoose.model("Task")
 var path = require("path");
+var keys = require("./twiliokeys");
 
 var app = express();
 
@@ -38,6 +39,27 @@ app.get("/:name", function(req, res){
 app.post("/home", function (req, res){
   Person.create(req.body).then(function(person){
     res.json(person);
+  });
+});
+
+//twilio integration
+app.post('/sendsms', (req, res) => {
+  var accountSid = 'ACcc9da7643bf18e44f258ebd74eea7a82';
+  var authToken = '1a3c44a9730d9edef125e2b9ecbaba92';
+  var twilio = require('twilio')
+  var client = new twilio(keys.sid, keys.token);
+  client.messages.create({
+    to: req.body.recipient,
+    from: '+12407021328',
+    body: 'Great success!!! *Borat voice*.'
+  }, function (err, responseData) {
+    console.log(err, responseData)
+    if (!err) {
+      res.json({
+        "From": responseData.from,
+        "Body": responseData.body
+      });
+    }
   });
 });
 
@@ -75,22 +97,6 @@ app.post("/:name/:task/remove", function removeTask(req, res){
     }
     else{
       res.json(docs);
-    }
-  });
-});
-
-//twilio integration
-app.post('/sendsms', parser.json(), (req, res) => {
-  var accountSid = 'ACcc9da7643bf18e44f258ebd74eea7a82';
-  var authToken = '1a3c44a9730d9edef125e2b9ecbaba92';
-  var client = require('twilio')(accountSid, authToken);
-  client.create({
-    to: req.body.data,
-    from: '+12407021328',
-    body: 'Great success!!! *Borat voice*.'
-  }, function (err, responseData) {
-    if (!err) {
-      res.json({"From": responseData.from, "Body": responseData.body});
     }
   });
 });

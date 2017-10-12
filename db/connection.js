@@ -14,6 +14,7 @@ var TaskSchema = new mongoose.Schema({
 var PersonSchema = new mongoose.Schema({
   name: String,
   phone: String,
+  email: String,
   tasks: [TaskSchema]
 })
 

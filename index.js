@@ -5,6 +5,10 @@ var mongoose  = require('./db/connection.js');
 const cors = require('cors')
 var Person = mongoose.model("Person")
 var Task = mongoose.model("Task")
+var path = require("path");
+var keys = require("./twiliokeys");
+
+cronJob = require('cron').CronJob;
 
 var app = express();
 
@@ -13,6 +17,8 @@ app.set("port", process.env.PORT || 3001);
 app.set("view engine", "hbs");
 
 app.use(cors())
+app.use('/', express.static('public'));
+
 
 //NEED THIS FOR REQ.BODY!!!!
 app.use(parser.json({extended:true}));
@@ -36,6 +42,40 @@ app.post("/home", function (req, res){
   Person.create(req.body).then(function(person){
     res.json(person);
   });
+});
+
+app.post('/schedSMS'), (req, res) => {
+  var twilio = require('twilio')
+  var client = new twilio(keys.sid, keys.token);
+  var CronJob = require('cron').CronJob;
+      new CronJob('* * * * * *', function() {
+      console.log('You will see this message every second');
+    }, null, true);
+}
+
+//twilio integration
+app.post('/sendsms', (req, res) => {
+
+  var CronJob = require('cron').CronJob;
+  var twilio = require('twilio')
+  var client = new twilio(keys.sid, keys.token);
+
+  new CronJob('* */8 * * *', function() {
+    client.messages.create({
+      to: req.body.recipient,
+      from: '+12407021328',
+      body: 'You still have a pending to-do item. Tick tock! We are not getting any younger...'
+    }, function (err, responseData) {
+      console.log(err, responseData)
+      if (!err) {
+        res.json({
+          "From": responseData.from,
+          "Body": responseData.body
+        });
+      }
+    });
+}, null, true, 'America/New_York');
+
 });
 
 //updates person

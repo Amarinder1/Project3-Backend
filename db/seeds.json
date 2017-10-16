@@ -1,18 +1,38 @@
 [
   {
-    "name": "Amarinder",
-    "phone": "2404236498",
+    "name": "Amarinder Pandher",
+    "phone": "+12404236498",
+    "email": "amarinder_pandher@yahoo.com",
     "tasks": [
-      {"title": "clean room", "date": "1-2-17"},
-      {"title": "take out trash", "date": "1-2-17"}
+      {"title": "clean room", "date": "2017-02-01"},
+      {"title": "take out trash", "date": "2017-01-02"}
     ]
   },
   {
-    "name": "Bil",
-    "phone": "2404213620",
+    "name": "Bil Gotti",
+    "phone": "+12404213620",
+    "email": "bilgooday@gmail.com",
     "tasks": [
-      {"title": "walk dog", "date": "9-3-17"},
-      {"title": "do homework", "date": "9-3-17"}
+      {"title": "walk dog", "date": "2017-07-08"},
+      {"title": "do homework", "date": "2017-10-23"}
+    ]
+  },
+  {
+    "name": "Netsuhe Bekele",
+    "phone": "+12404760201",
+    "email": "netsuhebekele@gmail.com",
+    "tasks": [
+      {"title": "sleep", "date": "2017-12-25"},
+      {"title": "get a bunny", "date": "2017-04-30"}
+    ]
+  },
+  {
+    "name": "Mohamed Elkarim",
+    "phone": "+15716450838",
+    "email": "mohdawad2010@hotmail.com",
+    "tasks": [
+      {"title": "collect beans", "date": "2017-11-1"},
+      {"title": "go pumpkin picking", "date": "2017-06-20"}
     ]
   }
 ]

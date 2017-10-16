@@ -5,19 +5,24 @@
   "main": "hello.js",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "chron": "0.0.4",
     "cors": "^2.8.4",
     "cron": "^1.3.0",
     "express": "^4.16.1",
     "express-handlebars": "^3.0.0",
     "hbs": "^4.0.1",
     "mongoose": "^4.12.0",
+<<<<<<< HEAD
+=======
+    "path": "^0.12.7",
+>>>>>>> 37af9d3de549d01459922c47abcdb6c5292b0ddd
     "start": "^5.1.0",
     "twilio": "^3.8.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

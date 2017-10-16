@@ -48,7 +48,7 @@ app.post('/sendsms', (req, res) => {
   var twilio = require('twilio')
   var client = new twilio(keys.sid, keys.token);
 
-  new CronJob('* * * * *', function() {
+  new CronJob('*/1 * * * *', function() {
     client.messages.create({
       to: req.body.recipient,
       from: '+12407021328',

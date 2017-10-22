@@ -38,16 +38,16 @@ Front-end: https://github.com/Gripholder/project3-frontend
 
 -------------**BREAKDOWN OF TEAM RESPONSIBILITIES IS AS FOLLOWS**---------------
 
-**Amarinder**:
+**Amarinder**: https://github.com/Amarinder1
   - Accountable for the backend and setting up the API's
 
-**Bil**:
+**Bil**: https://github.com/bilgooday
   - Accountable for Home, Persons Component, Aesthetics and Twilio
 
-**Netsuhe**:
+**Netsuhe**: https://github.com/Netsuhe
   - Responsible for the Tasks Component, all Documentation and social media
 
-**Mo**:
+**Mo**: https://github.com/Gripholder
   - Accountable for starting the app, merging branches, and user authentication
 
 **Group**:

@@ -63,7 +63,7 @@ app.post('/sendsms', (req, res) => {
   new CronJob('*/1 * * * *', function() {
     client.messages.create({
       to: req.body.recipient,
-      from: '+12407021328',
+      from: '+12406249566',
       body: 'You still have a pending to-do item. Tick tock! We are not getting any younger...'
     }, function (err, responseData) {
       console.log(err, responseData)
